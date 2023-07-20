@@ -1,4 +1,6 @@
-{
+{  "engines": {
+  "node": "18.16.0"
+},
   "name": "blog",
   "version": "1.0.0",
   "description": "This Blog App using MERN",
