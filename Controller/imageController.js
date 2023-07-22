@@ -20,8 +20,8 @@ export const uploadImage = (req,res) =>{
         return res.status(404).json({msg: "picture not Found"});
     }
 
-    const imageUrl = `${url}/file/${req.file.filename}`;
-    console.log(imageUrl);
+    const imageUrl = `${url}file/${req.file.filename}`;
+
 
     return res.status(200).json(imageUrl);
 }
