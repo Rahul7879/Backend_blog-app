@@ -1,20 +1,26 @@
 import Post from "../Model/post.js"
 
+export const startServer = async(req,res)=>{
+   let post;
+   try{
+     post = await Post.find({});
+     return res.status(200).json(post);
+   }catch(e){
+      return res.status(500).json({msg: e.message})
+   }
+}
 
 export const createPost = async(req,res) => {
    try{
-    const post =  await new Post(req.body);
-    post.save();
-
-    return res.status(200).json("Post save successfully")
+     const post = await Post.find({});
+     return res.status(200).json(post);
    }catch(e){
-        red.status(500).json()
+      return res.status(500).json({msg: e.message})
    }
 }
 
 export const getAllPosts = async (req, res) =>{
    let category = req.query.category;
-  
    let post;
    try{
       if(category){
@@ -53,13 +59,11 @@ export const updatePost = async(req, res)=>{
 
 export const deletePost = async(req, res)=>{
    try{  
-         console.log(req.params.id);
          const post = await Post.findById(req.params.id);
          if(!post){
             return res.status(404).json({msg: 'post not found'})
          }
          await Post.findByIdAndDelete(post._id);
-         console.log(post);
          return res.status(200).json({msg: "Post deleted successfully"})
    }catch(e){
           return res.status(500).json({e: e.message})

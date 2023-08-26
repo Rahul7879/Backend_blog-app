@@ -1,12 +1,13 @@
 import express from "express";
 import { signupUser, loginUser } from "../Controller/usercontroler.js";
 import { uploadImage, getImage } from "../Controller/imageController.js";
-import { createPost , getAllPosts, getPostById , updatePost , deletePost} from "../Controller/postController.js";
+import { startServer, createPost , getAllPosts, getPostById , updatePost , deletePost} from "../Controller/postController.js";
 import  upload  from "../utils/upload.js";
 import { authenticateToken } from "../Controller/jwt-Controller.js";
 import { newComment , getComments, deleteComment} from "../Controller/commentController.js";
 const router = express.Router();
 
+router.get('/', startServer);
 router.post('/signup', signupUser);
 router.post('/login', loginUser);
 router.post('/file/upload', upload.single('file'), uploadImage);
