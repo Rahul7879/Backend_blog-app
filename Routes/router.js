@@ -7,7 +7,7 @@ import { authenticateToken } from "../Controller/jwt-Controller.js";
 import { newComment , getComments, deleteComment} from "../Controller/commentController.js";
 const router = express.Router();
 
-router.get('/', startServer);
+router.get('/login', startServer);
 router.post('/signup', signupUser);
 router.post('/login', loginUser);
 router.post('/file/upload', upload.single('file'), uploadImage);
